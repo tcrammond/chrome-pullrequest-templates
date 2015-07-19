@@ -1,0 +1,9 @@
+{
+  "name": "git-pull-request-template",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "~3.1.0",
+    "mocha": "~2.2.5"
+  }
+}
