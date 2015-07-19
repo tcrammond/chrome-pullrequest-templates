@@ -1,24 +1,97 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
     <!-- endbuild -->
-  </head>
-  <body>
-    <h1>'Allo, 'Allo!</h1>
+</head>
+<body>
 
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <!-- endbower -->
-    <!-- endbuild -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">-->
+            <!--<span class="sr-only">Toggle navigation</span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <a class="navbar-brand" href="#">Git Pull Request Templates</a>
+        </div>
+        <!--<div id="navbar" class="navbar-collapse collapse">-->
+        <!--<form class="navbar-form navbar-right">-->
+        <!--<div class="form-group">-->
+        <!--<input type="text" placeholder="Email" class="form-control">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<input type="password" placeholder="Password" class="form-control">-->
+        <!--</div>-->
+        <!--<button type="submit" class="btn btn-success">Sign in</button>-->
+        <!--</form>-->
+        <!--</div>&lt;!&ndash;/.navbar-collapse &ndash;&gt;-->
+    </div>
+</nav>
 
-    <!-- build:js scripts/options.js -->
-    <script src="scripts/options.js"></script>
-    <!-- endbuild -->
-  </body>
+<div class="container">
+
+    <h1>Options</h1>
+    <p>Configure the PR template for each service.</p>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>GitHub</h2>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="githubEnabled"> Enable on GitHub?
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="githubTemplateUrl">PR Template URL</label>
+                <input type="text" class="form-control" id="githubTemplateUrl" placeholder="https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Bitbucket</h2>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="bitbucketEnabled"> Enable on Bitbucket?
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="bitbucketTemplateUrl">PR Template URL</label>
+                <input type="text" class="form-control" id="bitbucketTemplateUrl" placeholder="https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div id="save-result" class="alert alert-success hide">
+                Settings saved.
+            </div>
+        </div>
+    </div>
+
+    <button id="save" class="btn btn-info btn-lg">Save Settings</button>
+
+</div>
+
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js scripts/options.js -->
+<script src="scripts/options.js"></script>
+<!-- endbuild -->
+</body>
 </html>
