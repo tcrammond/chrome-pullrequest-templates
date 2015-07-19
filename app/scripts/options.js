@@ -2,7 +2,6 @@
 (function () {
     var defaultUrl = 'https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md';
 
-
     // Saves options to chrome.storage
     function save_options() {
 

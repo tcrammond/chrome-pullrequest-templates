@@ -29,9 +29,10 @@
   "content_scripts": [
     {
       "matches": [
-        "http://github.com/*/*",
-        "https://github.com/*/*",
-        "https://bitbucket.org/*/*"
+        "http://github.com/*/compare/*",
+        "https://github.com/*/compare/*",
+        "https://bitbucket.org/*/pull-request/new"
+        "http://bitbucket.org/*/pull-request/new"
       ],
       "js": [
         "scripts/contentscript.js"
