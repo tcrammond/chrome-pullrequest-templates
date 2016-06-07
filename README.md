@@ -3,7 +3,7 @@ Chrome extension to pre-populate pull requests with a template on GitHub and Bit
 Templates are loaded from a URL.
 
 ## Installation
-Get it from the chrome web store: LINK
+Get it from the chrome web store: [Link to extension](https://chrome.google.com/webstore/detail/git-pull-request-template/dlflgkjacacpmhdpiggkdiaieddfmkia?hl=en-US)
 
 ## Options
 Access the options page from your Chrome extensions page. 
