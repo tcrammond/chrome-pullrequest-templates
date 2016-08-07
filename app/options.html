@@ -61,6 +61,40 @@
     </div>
 
     <div class="row">
+        <div class="col-xs-12">
+            <h2>Custom Repository</h2>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="customRepoEnabled"> Enable on your custom repository?
+                </label>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="customRepoRegex">Custom Repo Regex</label>
+                <input type="text" class="form-control" id="customRepoRegex"
+                       placeholder="enterprise-stash(.*)pull-request/new">
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="customRepoDescriptionID">HTML ID of the PR Description Box</label>
+                <input type="text" class="form-control" id="customRepoDescriptionID" placeholder="id_description">
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="customRepoTemplateUrl">PR Template URL</label>
+                <input type="text" class="form-control" id="customRepoTemplateUrl"
+                       placeholder="https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4">
             <div id="save-result" class="alert alert-success hide">
                 Settings saved.

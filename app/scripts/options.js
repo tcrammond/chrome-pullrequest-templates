@@ -9,12 +9,23 @@
         var githubTemplateUrl = document.getElementById('githubTemplateUrl').value;
         var bitbucketEnabled = document.getElementById('bitbucketEnabled').checked;
         var bitbucketTemplateUrl = document.getElementById('bitbucketTemplateUrl').value;
+        
+        var customEnabled = document.getElementById('customRepoEnabled').checked;
+        var customTemplateUrl = document.getElementById('customRepoTemplateUrl').value;
+        var customRepoRegex = document.getElementById('customRepoRegex').value;
+        var customRepoDescriptionID = document.getElementById('customRepoDescriptionID').value;
 
         chrome.storage.sync.set({
             githubEnabled: githubEnabled,
             githubTemplateUrl: githubTemplateUrl ? githubTemplateUrl : defaultUrl,
             bitbucketEnabled: bitbucketEnabled,
-            bitbucketTemplateUrl: bitbucketTemplateUrl ? bitbucketTemplateUrl : defaultUrl
+            bitbucketTemplateUrl: bitbucketTemplateUrl ? bitbucketTemplateUrl : defaultUrl,
+
+            customEnabled: customEnabled,
+            customTemplateUrl: customTemplateUrl ? customTemplateUrl : defaultUrl,
+            customRepoRegex: customRepoRegex ? customRepoRegex : '',
+            customRepoDescriptionID: customRepoDescriptionID ? customRepoDescriptionID : ''
+
         }, function () {
 
             // Update status to let user know options were saved.
@@ -37,12 +48,24 @@
             githubEnabled: true,
             githubTemplateUrl: defaultUrl,
             bitbucketEnabled: true,
-            bitbucketTemplateUrl: defaultUrl
+            bitbucketTemplateUrl: defaultUrl,
+
+            customEnabled: true,
+            customTemplateUrl: defaultUrl,
+            customRepoRegex: '',
+            customRepoDescriptionID: ''
+
         }, function (items) {
             document.getElementById('githubEnabled').checked = items.githubEnabled;
             document.getElementById('githubTemplateUrl').value = items.githubTemplateUrl;
             document.getElementById('bitbucketEnabled').checked = items.bitbucketEnabled;
             document.getElementById('bitbucketTemplateUrl').value = items.githubTemplateUrl;
+            
+            document.getElementById('customRepoEnabled').checked = items.customEnabled;
+            document.getElementById('customRepoTemplateUrl').value = items.customTemplateUrl;
+            document.getElementById('customRepoRegex').value = items.customRepoRegex;
+            document.getElementById('customRepoDescriptionID').value = items.customRepoDescriptionID;
+
         });
 
     }
