@@ -8,3 +8,4 @@ test/bower_components
 package
 dist.zip
 .idea
+.DS_Store
