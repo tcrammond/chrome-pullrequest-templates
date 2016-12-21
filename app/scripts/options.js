@@ -11,6 +11,7 @@
     var bitbucketEnabled = document.getElementById('bitbucketEnabled').checked;
     var bitbucketTemplateContent = document.getElementById('bitbucketTemplateContent').value
     var bitbucketTemplateUrl = document.getElementById('bitbucketTemplateUrl').value;
+    var bitbucketOverwrite = document.getElementById('bitbucketOverwrite').checked;
 
     var customEnabled = document.getElementById('customRepoEnabled').checked;
     var customTemplateContent = document.getElementById('customRepoTemplateContent').value;
@@ -29,7 +30,8 @@
       customTemplateUrl: customTemplateUrl ? customTemplateUrl : defaultUrl,
       customTemplateContent: customTemplateContent || '',
       customRepoRegex: customRepoRegex ? customRepoRegex : '',
-      customRepoDescriptionID: customRepoDescriptionID ? customRepoDescriptionID : ''
+      customRepoDescriptionID: customRepoDescriptionID ? customRepoDescriptionID : '',
+      bitbucketOverwrite: bitbucketOverwrite
 
     }, function () {
       // Update status to let user know options were saved.
@@ -54,6 +56,7 @@
       bitbucketEnabled: true,
       bitbucketTemplateUrl: defaultUrl,
       bitbucketTemplateContent: '',
+      bitbucketOverwrite: true,
 
       customEnabled: true,
       customTemplateUrl: defaultUrl,
@@ -68,6 +71,7 @@
       document.getElementById('bitbucketEnabled').checked = items.bitbucketEnabled;
       document.getElementById('bitbucketTemplateUrl').value = items.githubTemplateUrl;
       document.getElementById('bitbucketTemplateContent').value = items.bitbucketTemplateContent;
+      document.getElementById('bitbucketOverwrite').value = items.bitbucketOverwrite;
 
       document.getElementById('customRepoEnabled').checked = items.customEnabled;
       document.getElementById('customRepoTemplateUrl').value = items.customTemplateUrl;
