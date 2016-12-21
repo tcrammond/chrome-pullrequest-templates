@@ -16,6 +16,7 @@
       bitbucketEnabled: true,
       bitbucketTemplateUrl: defaultUrl,
       bitbucketTemplateContent: '',
+      bitbucketOverwrite: true,
 
       customEnabled: true,
       customTemplateUrl: defaultUrl,
@@ -41,12 +42,16 @@
     if (el !== null) {
       /*
        Bitbucket clears out the PR description field / put in its own content based on commits to be merged.
-       We'll append the content.
+       We'll append the content depending on bitbucketOverwrite variable.
       */
       if (isBB || isCustom) {
-        setTimeout(function() {
-          el.value = el.value + (el.value && el.value.length ? '\r\n' : '') + template;
-        }, 1000);
+        if (options.bitbucketOverwrite){
+          el.value = template;
+        } else {
+          setTimeout(function() {
+            el.value = el.value + (el.value && el.value.length ? '\r\n' : '') + template;
+          }, 1000);
+        }
       } else {
         el.value = template;
       }
