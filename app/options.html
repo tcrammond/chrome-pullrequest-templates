@@ -44,6 +44,7 @@
     <div class="row">
         <div class="col-xs-12">
             <h2>GitHub</h2>
+            <p>Hey! These days GitHub has its own support for <a href="https://github.com/blog/2111-issue-and-pull-request-templates">templates</a>. This extension still works though.</p>
             <div class="checkbox">
                 <label>
                     <input type="checkbox" id="githubEnabled"> Enable on GitHub?
@@ -71,12 +72,19 @@
                     <input type="checkbox" id="bitbucketEnabled"> Enable on Bitbucket?
                 </label>
             </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="bitbucketOverwrite">Overwrite default template in Bitbucket?<br/>
+                    <em>By default, Bitbucket inserts a summary of PR's commits. Enable this to overwrite the summary instead of appending to it.</em>
+                </label>
+            </div>
             <div class="form-group">
                 <label for="bitbucketTemplateUrl">PR Template URL</label>
                 <input type="text" class="form-control" id="bitbucketTemplateUrl" placeholder="https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md">
             </div>
             <div class="form-group">
                 <label for="bitbucketTemplateContent">Manual PR Template</label>
+                <p>Need inspiration? Check out <a href="https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md">Sprint.ly's template</a></p>
                 <textarea id="bitbucketTemplateContent" class="form-control"></textarea>
             </div>
         </div>
