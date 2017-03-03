@@ -39,22 +39,22 @@
       el = document.getElementById(options.customRepoDescriptionID.toString());
     }
 
-    if (el !== null) {
-      /*
-       Bitbucket clears out the PR description field / put in its own content based on commits to be merged.
-       We'll append the content depending on bitbucketOverwrite variable.
-      */
-      if (isBB || isCustom) {
-        if (options.bitbucketOverwrite){
-          el.value = template;
-        } else {
-          setTimeout(function() {
-            el.value = el.value + (el.value && el.value.length ? '\r\n' : '') + template;
-          }, 1000);
-        }
-      } else {
+    if (el === null) return
+
+    if (isBB || isCustom) {
+
+      // If this looks like an "Edit PR" page, do not insert the template.
+      if (window.location.href.indexOf('/update') !== -1) return
+
+      if (options.bitbucketOverwrite){
         el.value = template;
+      } else {
+        setTimeout(function() {
+          el.value = el.value + (el.value && el.value.length ? '\r\n' : '') + template;
+        }, 1000);
       }
+    } else {
+      el.value = template;
     }
   }
 
