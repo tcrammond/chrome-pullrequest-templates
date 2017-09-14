@@ -9,7 +9,8 @@
     "url": "https://github.com/tcrammond/chrome-pullrequest-templates/issues"
   },
   "dependencies": {
-    "bower": "1.7.9"
+    "bower": "1.7.9",
+    "marked": "^0.3.6"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
