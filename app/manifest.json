@@ -1,6 +1,6 @@
 {
   "name": "__MSG_appName__",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "manifest_version": 2,
   "description": "__MSG_appDescription__",
   "icons": {
@@ -10,6 +10,7 @@
   "default_locale": "en",
   "background": {
     "scripts": [
+
       "scripts/chromereload.js",
       "scripts/background.js"
     ]
@@ -31,6 +32,7 @@
         "https://*/*/pull-request*"
       ],
       "js": [
+        "scripts/marked.min.js",
         "scripts/contentscript.js"
       ],
       "run_at": "document_end",

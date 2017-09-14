@@ -56,7 +56,7 @@
       bitbucketEnabled: true,
       bitbucketTemplateUrl: defaultUrl,
       bitbucketTemplateContent: '',
-      bitbucketOverwrite: false,
+      bitbucketOverwrite: true,
 
       customEnabled: true,
       customTemplateUrl: defaultUrl,
