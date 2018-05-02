@@ -71,7 +71,7 @@
       document.getElementById('bitbucketEnabled').checked = items.bitbucketEnabled;
       document.getElementById('bitbucketTemplateUrl').value = items.githubTemplateUrl;
       document.getElementById('bitbucketTemplateContent').value = items.bitbucketTemplateContent;
-      document.getElementById('bitbucketOverwrite').value = items.bitbucketOverwrite;
+      document.getElementById('bitbucketOverwrite').checked = items.bitbucketOverwrite;
 
       document.getElementById('customRepoEnabled').checked = items.customEnabled;
       document.getElementById('customRepoTemplateUrl').value = items.customTemplateUrl;
