@@ -69,7 +69,7 @@
       document.getElementById('githubTemplateUrl').value = items.githubTemplateUrl;
       document.getElementById('githubTemplateContent').value = items.githubTemplateContent;
       document.getElementById('bitbucketEnabled').checked = items.bitbucketEnabled;
-      document.getElementById('bitbucketTemplateUrl').value = items.githubTemplateUrl;
+      document.getElementById('bitbucketTemplateUrl').value = items.bitbucketTemplateUrl;
       document.getElementById('bitbucketTemplateContent').value = items.bitbucketTemplateContent;
       document.getElementById('bitbucketOverwrite').checked = items.bitbucketOverwrite;
 
