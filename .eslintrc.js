@@ -1,7 +1,7 @@
 module.exports = {
   extends: 'standard',
   globals: {
-
+    chrome: false
   },
   rules: {
     'semi': [2, 'always'],
@@ -23,9 +23,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['src/scripts/*.js'],
+      files: ['src/scripts/content.js'],
       globals: {
-        chrome: false,
+        marked: false
       }
     }
   ]

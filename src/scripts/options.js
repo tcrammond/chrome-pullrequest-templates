@@ -1,54 +1,51 @@
 'use strict';
 (function () {
-  var defaultUrl = 'https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md';
+  const defaultUrl = 'https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md';
 
   // Saves options to chrome.storage
-  function save_options() {
+  function saveOptions () {
+    const githubEnabled = document.getElementById('githubEnabled').checked;
+    const githubTemplateUrl = document.getElementById('githubTemplateUrl').value;
+    const githubTemplateContent = document.getElementById('githubTemplateContent').value;
+    const bitbucketEnabled = document.getElementById('bitbucketEnabled').checked;
+    const bitbucketTemplateContent = document.getElementById('bitbucketTemplateContent').value;
+    const bitbucketTemplateUrl = document.getElementById('bitbucketTemplateUrl').value;
+    const bitbucketOverwrite = document.getElementById('bitbucketOverwrite').checked;
 
-    var githubEnabled = document.getElementById('githubEnabled').checked;
-    var githubTemplateUrl = document.getElementById('githubTemplateUrl').value;
-    var githubTemplateContent = document.getElementById('githubTemplateContent').value;
-    var bitbucketEnabled = document.getElementById('bitbucketEnabled').checked;
-    var bitbucketTemplateContent = document.getElementById('bitbucketTemplateContent').value
-    var bitbucketTemplateUrl = document.getElementById('bitbucketTemplateUrl').value;
-    var bitbucketOverwrite = document.getElementById('bitbucketOverwrite').checked;
-
-    var customEnabled = document.getElementById('customRepoEnabled').checked;
-    var customTemplateContent = document.getElementById('customRepoTemplateContent').value;
-    var customTemplateUrl = document.getElementById('customRepoTemplateUrl').value;
-    var customRepoRegex = document.getElementById('customRepoRegex').value;
-    var customRepoDescriptionID = document.getElementById('customRepoDescriptionID').value;
+    const customEnabled = document.getElementById('customRepoEnabled').checked;
+    const customTemplateContent = document.getElementById('customRepoTemplateContent').value;
+    const customTemplateUrl = document.getElementById('customRepoTemplateUrl').value;
+    const customRepoRegex = document.getElementById('customRepoRegex').value;
+    const customRepoDescriptionID = document.getElementById('customRepoDescriptionID').value;
 
     chrome.storage.sync.set({
       githubEnabled: githubEnabled,
-      githubTemplateUrl: githubTemplateUrl ? githubTemplateUrl : defaultUrl,
+      githubTemplateUrl: githubTemplateUrl || defaultUrl,
       githubTemplateContent: githubTemplateContent || '',
       bitbucketEnabled: bitbucketEnabled,
-      bitbucketTemplateUrl: bitbucketTemplateUrl ? bitbucketTemplateUrl : defaultUrl,
+      bitbucketTemplateUrl: bitbucketTemplateUrl || defaultUrl,
       bitbucketTemplateContent: bitbucketTemplateContent || '',
       customEnabled: customEnabled,
-      customTemplateUrl: customTemplateUrl ? customTemplateUrl : defaultUrl,
+      customTemplateUrl: customTemplateUrl || defaultUrl,
       customTemplateContent: customTemplateContent || '',
-      customRepoRegex: customRepoRegex ? customRepoRegex : '',
-      customRepoDescriptionID: customRepoDescriptionID ? customRepoDescriptionID : '',
+      customRepoRegex: customRepoRegex || '',
+      customRepoDescriptionID: customRepoDescriptionID || '',
       bitbucketOverwrite: bitbucketOverwrite
 
     }, function () {
       // Update status to let user know options were saved.
-      var result = document.getElementById('save-result');
-      result.className = result.className.replace(/\bhide\b/,'');
+      const result = document.getElementById('save-result');
+      result.className = result.className.replace(/\bhide\b/, '');
 
       setTimeout(function () {
         result.className = result.className + ' hide';
       }, 1500);
     });
-
   }
 
   // Restores select box and checkbox state using the preferences
   // stored in chrome.storage.
-  function restore_options() {
-
+  function restoreOptions () {
     chrome.storage.sync.get({
       githubEnabled: true,
       githubTemplateUrl: defaultUrl,
@@ -78,11 +75,9 @@
       document.getElementById('customRepoTemplateContent').value = items.customTemplateContent;
       document.getElementById('customRepoRegex').value = items.customRepoRegex;
       document.getElementById('customRepoDescriptionID').value = items.customRepoDescriptionID;
-
     });
-
   }
 
-  document.addEventListener('DOMContentLoaded', restore_options);
-  document.getElementById('save').addEventListener('click', save_options);
+  document.addEventListener('DOMContentLoaded', restoreOptions);
+  document.getElementById('save').addEventListener('click', saveOptions);
 })();

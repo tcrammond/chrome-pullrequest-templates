@@ -1,3 +1,3 @@
 'use strict';
 
-chrome.browserAction.setBadgeText({text: 'PR'});
+chrome.browserAction.setBadgeText({ text: 'PR' });
