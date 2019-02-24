@@ -82,7 +82,6 @@
 
   // New contenteditable editor
   function insertContenteditable (el, template, overwrite) {
-    console.log(el.innerHTML);
     setTimeout(function () {
       if (overwrite) {
         el.innerHTML = marked(template);
