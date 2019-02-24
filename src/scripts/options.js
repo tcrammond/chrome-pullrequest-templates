@@ -32,7 +32,7 @@
       customRepoDescriptionID: customRepoDescriptionID || '',
       bitbucketOverwrite: bitbucketOverwrite
 
-    }, function () {
+    }).then(() => {
       // Update status to let user know options were saved.
       const result = document.getElementById('save-result');
       result.className = result.className.replace(/\bhide\b/, '');
@@ -40,6 +40,8 @@
       setTimeout(function () {
         result.className = result.className + ' hide';
       }, 1500);
+    }).catch((e) => {
+      console.error('Could not save options.', e);
     });
   }
 
@@ -61,7 +63,7 @@
       customRepoRegex: '',
       customRepoDescriptionID: ''
 
-    }, function (items) {
+    }).then((items) => {
       document.getElementById('githubEnabled').checked = items.githubEnabled;
       document.getElementById('githubTemplateUrl').value = items.githubTemplateUrl;
       document.getElementById('githubTemplateContent').value = items.githubTemplateContent;
@@ -75,6 +77,8 @@
       document.getElementById('customRepoTemplateContent').value = items.customTemplateContent;
       document.getElementById('customRepoRegex').value = items.customRepoRegex;
       document.getElementById('customRepoDescriptionID').value = items.customRepoDescriptionID;
+    }).catch((e) => {
+      console.error('Could not retrieve options.', e);
     });
   }
 

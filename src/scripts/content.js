@@ -1,8 +1,10 @@
 'use strict';
+const browser = require('webextension-polyfill');
 
 (function () {
   const defaultUrl = 'https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md';
-  let options; let isCustom;
+  let options;
+  let isCustom;
 
   const isGH = window.location.href.match(/github.com/);
   const isBB = window.location.href.match(/bitbucket.org/);
@@ -10,23 +12,26 @@
   loadOptions(getTemplate);
 
   function loadOptions (cb) {
-    chrome.storage.sync.get({
-      githubEnabled: true,
-      githubTemplateUrl: defaultUrl,
-      githubTemplateContent: '',
-      bitbucketEnabled: true,
-      bitbucketTemplateUrl: defaultUrl,
-      bitbucketTemplateContent: '',
-      bitbucketOverwrite: true,
+    browser.storage.sync
+      .get({
+        githubEnabled: true,
+        githubTemplateUrl: defaultUrl,
+        githubTemplateContent: '',
+        bitbucketEnabled: true,
+        bitbucketTemplateUrl: defaultUrl,
+        bitbucketTemplateContent: '',
+        bitbucketOverwrite: true,
 
-      customEnabled: true,
-      customTemplateUrl: defaultUrl,
-      customRepoRegex: '',
-      customRepoDescriptionID: ''
-    }, function (items) {
-      options = items;
-      cb();
-    });
+        customEnabled: true,
+        customTemplateUrl: defaultUrl,
+        customRepoRegex: '',
+        customRepoDescriptionID: ''
+      }).then((items) => {
+        options = items;
+        cb();
+      }).catch((e) => {
+        console.error('Could not fecth options.', e);
+      });
   }
 
   function insertTemplate (template) {
