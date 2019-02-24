@@ -1,3 +1,3 @@
 'use strict';
-
-chrome.browserAction.setBadgeText({ text: 'PR' });
+const browser = require('webextension-polyfill');
+browser.browserAction.setBadgeText({ text: 'PR' });
