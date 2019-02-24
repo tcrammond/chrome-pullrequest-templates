@@ -1,8 +1,9 @@
 'use strict';
 (function () {
+  const browser = require('webextension-polyfill');
   const defaultUrl = 'https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md';
 
-  // Saves options to chrome.storage
+  // Saves options to browser.storage
   function saveOptions () {
     const githubEnabled = document.getElementById('githubEnabled').checked;
     const githubTemplateUrl = document.getElementById('githubTemplateUrl').value;
@@ -18,7 +19,7 @@
     const customRepoRegex = document.getElementById('customRepoRegex').value;
     const customRepoDescriptionID = document.getElementById('customRepoDescriptionID').value;
 
-    chrome.storage.sync.set({
+    browser.storage.sync.set({
       githubEnabled: githubEnabled,
       githubTemplateUrl: githubTemplateUrl || defaultUrl,
       githubTemplateContent: githubTemplateContent || '',
@@ -46,9 +47,9 @@
   }
 
   // Restores select box and checkbox state using the preferences
-  // stored in chrome.storage.
+  // stored in browser.storage.
   function restoreOptions () {
-    chrome.storage.sync.get({
+    browser.storage.sync.get({
       githubEnabled: true,
       githubTemplateUrl: defaultUrl,
       githubTemplateContent: '',
