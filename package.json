@@ -11,7 +11,7 @@
   "dependencies": {
     "bootstrap": "^3.3.5",
     "bower": "1.7.9",
-    "marked": "^0.3.19"
+    "marked": "^0.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",

@@ -1,7 +1,6 @@
 'use strict';
 (function () {
   const browser = require('webextension-polyfill');
-  const defaultUrl = 'https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md';
 
   // Saves options to browser.storage
   function saveOptions () {
@@ -21,13 +20,13 @@
 
     browser.storage.sync.set({
       githubEnabled: githubEnabled,
-      githubTemplateUrl: githubTemplateUrl || defaultUrl,
+      githubTemplateUrl: githubTemplateUrl || '',
       githubTemplateContent: githubTemplateContent || '',
       bitbucketEnabled: bitbucketEnabled,
-      bitbucketTemplateUrl: bitbucketTemplateUrl || defaultUrl,
+      bitbucketTemplateUrl: bitbucketTemplateUrl || '',
       bitbucketTemplateContent: bitbucketTemplateContent || '',
       customEnabled: customEnabled,
-      customTemplateUrl: customTemplateUrl || defaultUrl,
+      customTemplateUrl: customTemplateUrl || '',
       customTemplateContent: customTemplateContent || '',
       customRepoRegex: customRepoRegex || '',
       customRepoDescriptionID: customRepoDescriptionID || '',
@@ -51,15 +50,15 @@
   function restoreOptions () {
     browser.storage.sync.get({
       githubEnabled: true,
-      githubTemplateUrl: defaultUrl,
+      githubTemplateUrl: '',
       githubTemplateContent: '',
       bitbucketEnabled: true,
-      bitbucketTemplateUrl: defaultUrl,
+      bitbucketTemplateUrl: '',
       bitbucketTemplateContent: '',
       bitbucketOverwrite: true,
 
       customEnabled: true,
-      customTemplateUrl: defaultUrl,
+      customTemplateUrl: '',
       customTemplateContent: '',
       customRepoRegex: '',
       customRepoDescriptionID: ''
