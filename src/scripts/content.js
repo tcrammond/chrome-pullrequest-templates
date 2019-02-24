@@ -1,5 +1,6 @@
 'use strict';
 const browser = require('webextension-polyfill');
+const marked = require('marked');
 
 (function () {
   const defaultUrl = 'https://raw.github.com/sprintly/sprint.ly-culture/master/pr-template.md';
@@ -89,9 +90,10 @@ const browser = require('webextension-polyfill');
   function insertContenteditable (el, template, overwrite) {
     setTimeout(function () {
       if (overwrite) {
-        el.innerHTML = marked(template);
+        el.innerHTML = marked(template, { sanitize: true });
       } else {
-        el.innerHTML = el.innerHTML + ((el.innerHTML && el.innerHTML.length ? '<br/>' : '') + marked(template));
+        const hasContent = el.innerHTML && el.innerHTML.length;
+        el.innerHTML = `${el.innerHTML}${hasContent ? '<br/>' : ''}${marked(template, { sanitize: true })}`;
       }
     }, 1000);
   }

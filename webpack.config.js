@@ -51,10 +51,6 @@ module.exports = {
         to: 'styles'
       },
       {
-        from: 'node_modules/marked/marked.min.js',
-        to: 'scripts'
-      },
-      {
         from: 'src/_locales',
         to: '_locales'
       },

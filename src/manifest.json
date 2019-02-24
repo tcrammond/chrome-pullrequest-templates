@@ -31,7 +31,6 @@
         "*://*/pull-request/*"
       ],
       "js": [
-        "scripts/marked.min.js",
         "scripts/content.js"
       ],
       "run_at": "document_end",
