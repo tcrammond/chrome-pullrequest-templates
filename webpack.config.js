@@ -1,5 +1,5 @@
 const path = require('path');
-const CleanPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const { EnvironmentPlugin } = require('webpack');
@@ -27,14 +27,14 @@ module.exports = {
       }
     ]
   },
-  
+
   plugins: [
     new EnvironmentPlugin({
       DEBUG: process.env.NODE_ENV === 'development'
     }),
-    new CleanPlugin([path.resolve(__dirname, 'dist')]),
-    new CopyPlugin([
-      {
+    new CleanWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [{
         from: 'src/images',
         to: 'images'
       },
@@ -55,12 +55,13 @@ module.exports = {
         to: '_locales'
       },
       {
-        from: 'src/manifest.json',
+        from: !!process.env.V2 ? 'src/manifest.v2.json' : 'src/manifest.json',
         to: 'manifest.json'
-      }
-    ]),
+      }]
+    }),
     process.env.NODE_ENV === 'production' &&
-      new FileManagerPlugin({
+    new FileManagerPlugin({
+      events: {
         onEnd: [
           {
             archive: [
@@ -71,6 +72,7 @@ module.exports = {
             ]
           }
         ]
-      })
+      }
+    })
   ].filter(Boolean)
 };

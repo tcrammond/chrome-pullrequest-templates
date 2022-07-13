@@ -1,4 +1,5 @@
 'use strict';
+const DOMPurify = require('dompurify');
 const browser = require('webextension-polyfill');
 const marked = require('marked');
 
@@ -90,10 +91,10 @@ const marked = require('marked');
   function insertContenteditable (el, template, overwrite) {
     setTimeout(function () {
       if (overwrite) {
-        el.innerHTML = marked(template, { sanitize: true });
+        el.innerHTML = DOMPurify.sanitize(marked.parse(template));
       } else {
         const hasContent = el.innerHTML && el.innerHTML.length;
-        el.innerHTML = `${el.innerHTML}${hasContent ? '<br/>' : ''}${marked(template, { sanitize: true })}`;
+        el.innerHTML = `${el.innerHTML}${hasContent ? '<br/>' : ''}${DOMPurify.sanitize(marked.parse(template))}`;
       }
     }, 1000);
   }
